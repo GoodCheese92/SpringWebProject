@@ -375,27 +375,7 @@ pageContext.setAttribute("LF", "\n");
 
         console.log(${review_score});
         var dom = document.getElementById('starpoint_${review_score}');
-		dom.checked = true;
 
-        let idx = '${vo1.product_idx}';
-        document.ff.idx.value = idx;
-        var url = 'buy_product.do';
-        var param = 'idx=' + idx;
-        sendRequest(url, param, resFn, "POST")
-    }
-    let price;
-
-    function resFn() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            price = parseInt(xhr.responseText);
-            document.ff.price.value = price;
-            document.ff.totPrice.value = price + 3000;
-        }
-    }//resFn()
-
-    function show() {
-        var dom = document.getElementById('go_select').submit();
-    }
 
         let idx = '${vo1.product_idx}';
         document.ff.idx.value = idx;
