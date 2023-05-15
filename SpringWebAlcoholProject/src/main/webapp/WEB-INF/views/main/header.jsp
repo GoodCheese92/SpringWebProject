@@ -130,16 +130,8 @@
                         	<hr class="dropdown-divider">
                     	</c:if>
                         <li>
-                            <a class="dropdown-item" href="purchaseItemList.do">
-                                <span>구매 목록</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
                             <a class="dropdown-item" href="pay_list.do">
-                                <span>취소/환불 목록</span>
+                                <span>구매 목록</span>
                             </a>
                         </li>
                         <li>

@@ -109,8 +109,7 @@
 								<c:when test="${cart.orderlist_status lt 2}">
 									<script>
 										function beforeSubmit(f) {
-											f.cart.value = JSON
-													.stringify('${cart.cart}');
+											f.cart.value = JSON.stringify('${cart.cart}');
 											return true;
 										}
 									</script>

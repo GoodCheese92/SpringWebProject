@@ -24,7 +24,7 @@ public class BuyDAO {
 		return session.selectList("b.select_products",cart);
 	}
 	public ProducerVO selectProducer(int idx) {
-		return session.selectOne("b.select_producer_name",idx);
+		return session.selectOne("b.select_producer",idx);
 	}
 	public int insertOrder(List<OrderListVO> list) {
 		int res=0;

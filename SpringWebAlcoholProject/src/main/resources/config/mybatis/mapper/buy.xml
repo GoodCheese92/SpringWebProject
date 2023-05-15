@@ -15,12 +15,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{orderlist.product_idx}
 		</foreach>
 	</select>
-	<select id="select_producer_name" parameterType="int"
-		resultType="producer">
-		select * from Producer where producer_idx=#{idx}
+	<select id="select_producer" resultType="producer">
+		select * from
+		Producer where producer_idx=#{idx}
 	</select>
 	<insert id="insertOrder" parameterType="orderlist">
-		insert into order_list values(
+		insert into order_list
+		values(
 		seq_orderlist_idx.nextVal,
 		#{orderlist_addr},
 		0,
@@ -38,23 +39,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select sysdate from dual
 	</select>
 	<select id="selectProductName" resultType="product">
-		select * from product where product_idx=#{product_idx}
+		select * from product
+		where product_idx=#{product_idx}
 	</select>
 	<select id="selectdate" resultType="orderlist">
-		SELECT DISTINCT orderlist_date, pay_id FROM order_list WHERE user_idx = #{user_idx}
+		SELECT DISTINCT
+		orderlist_date, pay_id FROM order_list WHERE user_idx = #{user_idx}
 	</select>
-	<select id="selectOrder" parameterType="orderlist" resultType="orderlist">
-		select * from order_list where orderlist_date=#{orderlist_date} AND user_idx=#{user_idx}
+	<select id="selectOrder" parameterType="orderlist"
+		resultType="orderlist">
+		select * from order_list where
+		orderlist_date=#{orderlist_date} AND user_idx=#{user_idx}
 	</select>
 	<select id="selectOrderAll" resultType="orderlist">
-		select * from order_list where user_idx=#{user_idx}
+		select * from order_list
+		where user_idx=#{user_idx}
 	</select>
 	<update id="updateOrder" parameterType="orderlist">
 		update order_list set
 		orderlist_addr=#{orderlist_addr},
 		orderlist_status=1,
 		orderlist_phonenumber=#{orderlist_phonenumber}
-		where orderlist_idx=#{orderlist_idx}
+		where
+		orderlist_idx=#{orderlist_idx}
 	</update>
 	<update id="updateOrderPaid" parameterType="orderlist">
 		update order_list set
@@ -67,10 +74,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updateRefund" parameterType="orderlist">
 		update order_list set
 		orderlist_status=9
-		where orderlist_date=#{orderlist_date} AND user_idx=#{user_idx}
+		where orderlist_date=#{orderlist_date} AND
+		user_idx=#{user_idx}
 	</update>
 	<delete id="deleteCart" parameterType="orderlist">
-		delete from order_list where user_idx=#{user_idx} AND orderlist_date=#{orderlist_date}
+		delete from order_list
+		where user_idx=#{user_idx} AND orderlist_date=#{orderlist_date}
 	</delete>
 </mapper>
 

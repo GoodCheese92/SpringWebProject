@@ -123,6 +123,7 @@ public class BuyController implements Buy, NicePayKey {
 	@ResponseBody
 	public String[] findProdcerName(@RequestBody Map<String, Object> data) {
 		List<Integer> idxs = (ArrayList<Integer>) (data.get("idxs"));
+		System.out.println(idxs.size());
 		String[] names = new String[idxs.size()];
 		for (int i = 0; i < idxs.size(); i++) {
 			if (idxs.get(i) != 0) {

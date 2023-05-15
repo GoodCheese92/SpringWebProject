@@ -102,7 +102,7 @@ function calTotal(){
 function removeElem(idx){
 	var url="remove_cart_in.do";
 	var param="idx="+idx;
-	sendRequest(url,param,(response)=>{},"GET");
+	sendRequest(url,param,(response)=>{},"POST");
 }
 
 function fixProducerName(){
@@ -114,18 +114,17 @@ function fixProducerName(){
     producerNames.forEach((producerName) => {
         idxs.push(parseInt(producerName.innerHTML));
     });
-	    let data= { idxs: idxs };
-	    const xhr = new XMLHttpRequest();
-	    xhr.open("POST", url);
-	    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	    xhr.onreadystatechange = function() {
-	    	if (xhr.readyState === 4 && xhr.status === 200) {
-	        	const names = JSON.parse(xhr.responseText);
-	        	producerNames.forEach((producerName, idx) => {
-	            	producerName.innerHTML = names[idx];
-	        	});
-	    	}
-	    };
-    
+   	let data= { idxs: idxs };
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.onreadystatechange = function() {
+    	if (xhr.readyState === 4 && xhr.status === 200) {
+        	const names = JSON.parse(xhr.responseText);
+        	producerNames.forEach((producerName, idx) => {
+            	producerName.innerHTML = names[idx];
+        	});
+    	}
+    };
     xhr.send(JSON.stringify(data));
 }

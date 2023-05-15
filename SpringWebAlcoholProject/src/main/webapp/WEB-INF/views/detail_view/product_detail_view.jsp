@@ -289,19 +289,7 @@ pageContext.setAttribute("LF", "\n");
 					<div class="col-lg-4">
 						<div class="sidebar border rr_box">
 							<form name="ff">
-								<%--<input name="idx" type="hidden"> <input name="price"
-									type="hidden"> <input name="amount" type="hidden"
-									value="1">
-								<div style="width: 100%;">
-									<div style="font-weight: bold; margin: 20px 0;">수량</div>
-									<div class="input_number" style="width: 100%;">
-										<div class="btn-group" role="group" aria-label="Basic example"
-											style="width: 100%;">
-											<button type="button" class="btn btn-primary left"
-												onclick="cal('-');">-</button>
-											<span class="btn btn-primary center" id="amount">1</span>
-											<button type="button" class="btn btn-primary right"
-												onclick="cal('+');">+</button>--%>
+
 								<input name="idx" type="hidden">
 								<input name="price" type="hidden">
 								<input name="amount" type="hidden" value="1">
@@ -317,23 +305,18 @@ pageContext.setAttribute("LF", "\n");
 								</div>
 								<div style="width: 100%;">
 									<div style="font-weight: bolder; margin: 20px 0;">총 가격<span style="color : #00665b; font-style:italic;">(배송비 3000원 포함)</span></div>
-									<input class="number" name="totPrice" disabled>
+									<input id="total_price" class="number" name="totPrice" readonly>
 								</div>
 								<div class="shopping_basket">
 									<button type="button" class="btn btn-primary number buy"
 										onclick="cart(this.form);">
-									<%--<div style="font-weight: bold; margin: 20px 0;">총 가격</div>
-									<input class="number" name="totPrice" disabled>
-								</div>
-								<div class="shopping_basket">
-									<button type="button" class="btn btn-primary number buy" onclick="cart(this.form);">--%>
+
 										<i class='bx bx-basket'>장바구니</i>
 									</button>
 								</div>
 								<div class="shopping">
 									<button type="button" class="btn btn-primary number buy"
 										onclick="buying(this.form)">
-									<%--<button type="button" class="btn btn-primary number buy" onclick="buying(this.form)">--%>
 										<i class='bx bx-gift'>구매하기</i>
 									</button>
 								</div>
@@ -373,7 +356,6 @@ pageContext.setAttribute("LF", "\n");
 
     window.onload = function () {
 
-        console.log(${review_score});
         var dom = document.getElementById('starpoint_${review_score}');
 
 
@@ -387,21 +369,14 @@ pageContext.setAttribute("LF", "\n");
 
     function cal(op) {
         var total_number = document.getElementById('total_price');
-        var price = "${vo1.product_price}";
-        var number = total_number.innerText / price
-        var center = document.getElementById('center');
-        console.log(total_number.innerText / price);
-        console.log(price);
-        if (op == '-') {
-            if (number <= 0) {
-                number = 0;
-            } else {
-                number--;
-            }
-        } else {
+        var center = document.getElementById('amount');
+        var number = center.innerText;
+        if (op == '-'&& number>1) {
+            number--;
+        } else if(op=='+'){
             number++;
         }
-        total_number.innerText = price * number;
+        total_number.value = price * number+3000;
         center.innerText = number;
     }//cal(op)
 
